@@ -9,10 +9,12 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Task Tracker';
-  showAddTask: boolean = false;
+  showAddTask: boolean = true;
   subscription!: Subscription;
 
-  constructor(private uiService: UIService) { }
+  constructor(private uiService: UIService) { 
+    this.subscription = this.uiService.onToggle().subscribe((value) => (this.showAddTask = value)); // onToggle returns an Observable, so we want to subscribe to it when it returns the true or false value.
+  } // remember to use a service, we have to add it to our constructor
 
   ngOnInit(): void {
   }

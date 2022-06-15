@@ -1,4 +1,6 @@
-<form (ngSubmit)="onSubmit()">
+<!-- we want to display this form if showAddTask is true, otherwise hide it -->
+
+<form *ngIf="showAddTask" (ngSubmit)="onSubmit()">
   <div class="form-control">
     <label for="text">Task</label>
     <!-- two way databinding with [()]. need to have name attribute with same value. -->
